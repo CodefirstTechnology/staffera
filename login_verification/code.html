@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>StaffEra - Login</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#7d44a4",
+                    "surface-variant": "#e4e1ea",
+                    "surface-bright": "#fcf8ff",
+                    "on-tertiary-fixed": "#341100",
+                    "surface-container": "#f0ecf5",
+                    "surface-dim": "#dbd9e1",
+                    "on-primary-container": "#9da1ff",
+                    "on-primary-fixed-variant": "#373a9b",
+                    "on-background": "#1b1b21",
+                    "error": "#ba1a1a",
+                    "on-error": "#ffffff",
+                    "on-surface-variant": "#464652",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-container": "#602786",
+                    "secondary-fixed": "#f4daff",
+                    "inverse-primary": "#c0c1ff",
+                    "inverse-surface": "#303036",
+                    "secondary-container": "#d697fe",
+                    "tertiary-fixed": "#ffdbcb",
+                    "on-secondary-fixed": "#2f004c",
+                    "primary": "#15157d",
+                    "surface-container-high": "#eae7f0",
+                    "background": "#fcf8ff",
+                    "error-container": "#ffdad6",
+                    "surface-tint": "#4f54b4",
+                    "primary-fixed-dim": "#c0c1ff",
+                    "inverse-on-surface": "#f2eff8",
+                    "primary-fixed": "#e1e0ff",
+                    "primary-container": "#2e3192",
+                    "surface-container-low": "#f5f2fb",
+                    "on-tertiary-container": "#f19160",
+                    "on-secondary-fixed-variant": "#642b8a",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-container": "#6c2a00",
+                    "on-primary": "#ffffff",
+                    "surface-container-highest": "#e4e1ea",
+                    "tertiary-fixed-dim": "#ffb692",
+                    "on-secondary": "#ffffff",
+                    "on-surface": "#1b1b21",
+                    "on-error-container": "#93000a",
+                    "outline": "#777683",
+                    "surface": "#fcf8ff",
+                    "secondary-fixed-dim": "#e3b5ff",
+                    "on-tertiary-fixed-variant": "#773207",
+                    "tertiary": "#491a00",
+                    "on-primary-fixed": "#04006d",
+                    "outline-variant": "#c7c5d4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "card-gap": "20px",
+                    "container-padding": "24px",
+                    "unit": "8px",
+                    "gutter": "16px",
+                    "section-margin": "40px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "caption": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        /* Smooth transitions for interactive elements */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        
+        /* Floating label logic */
+        .ghost-input:focus-within label,
+        .ghost-input input:not(:placeholder-shown) + label {
+            transform: translateY(-8px) scale(0.85);
+            color: #15157d; /* primary */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface min-h-screen flex flex-col font-sans relative overflow-hidden selection:bg-primary/20 selection:text-primary">
+<!-- Ambient Background Depth (Smart Luxury feel) -->
+<div class="absolute top-[-10%] right-[-20%] w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[80px] pointer-events-none"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-primary/5 rounded-full blur-[60px] pointer-events-none"></div>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col px-container-padding pt-20 pb-safe z-10 max-w-md mx-auto w-full">
+<!-- Header Section -->
+<header class="mb-section-margin">
+<h1 class="text-primary font-headline-lg-mobile text-headline-lg-mobile tracking-tight mb-2">StaffEra</h1>
+<p class="text-body-md font-body-md text-on-surface-variant">Enter your phone number to continue.</p>
+</header>
+<!-- Form Section -->
+<div class="flex-1 flex flex-col gap-unit">
+<!-- Input Area -->
+<div class="flex items-stretch gap-3 mb-4">
+<!-- Country Picker -->
+<button class="flex items-center gap-2 bg-surface-container-low hover:bg-surface-container transition-colors rounded-lg px-3 py-4 border border-transparent focus:border-primary focus:ring-1 focus:ring-primary outline-none h-[64px]">
+<span class="text-body-md">🇺🇸</span>
+<span class="text-label-md font-label-md text-on-surface">+1</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">keyboard_arrow_down</span>
+</button>
+<!-- Phone Input (Ghost Style) -->
+<div class="ghost-input relative flex-1 bg-surface-container-low rounded-lg pt-6 pb-2 px-4 border border-transparent focus-within:bg-surface-container-lowest focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all h-[64px]">
+<input autocomplete="tel" class="w-full bg-transparent outline-none text-body-md font-body-md text-on-surface placeholder-transparent peer" id="phone" placeholder="(555) 000-0000" type="tel"/>
+<label class="absolute top-4 left-4 text-caption font-caption text-on-surface-variant transition-all transform origin-left pointer-events-none" for="phone">Phone Number</label>
+</div>
+</div>
+<!-- Primary Action -->
+<!-- Using the specified Secondary Gradient (#662D8C to #ED1E79) for primary buttons -->
+<button class="w-full h-[56px] rounded-lg bg-gradient-to-r from-[#662D8C] to-[#ED1E79] text-white text-label-md font-label-md shadow-[0_8px_20px_rgba(237,30,121,0.25)] active:scale-95 transition-transform flex items-center justify-center mb-section-margin">
+                Send OTP
+            </button>
+<!-- Divider -->
+<div class="flex items-center gap-4 mb-6">
+<div class="flex-1 h-[1px] bg-outline-variant/30"></div>
+<span class="text-caption font-caption text-on-surface-variant uppercase tracking-wider">Or continue with</span>
+<div class="flex-1 h-[1px] bg-outline-variant/30"></div>
+</div>
+<!-- Social Logins -->
+<div class="flex gap-4">
+<button class="flex-1 h-[56px] flex items-center justify-center gap-2 rounded-lg border border-outline-variant hover:bg-surface-container-low transition-colors active:scale-95">
+<!-- Placeholder for Google Icon -->
+<svg class="w-5 h-5" fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M22.56 12.25C22.56 11.47 22.49 10.73 22.36 10H12V14.26H17.92C17.67 15.63 16.86 16.79 15.69 17.57V20.34H19.26C21.35 18.42 22.56 15.6 22.56 12.25Z" fill="#4285F4"></path>
+<path d="M12 23C14.97 23 17.46 22.02 19.26 20.34L15.69 17.57C14.71 18.23 13.47 18.63 12 18.63C9.16 18.63 6.76 16.71 5.9 14.14H2.22V16.99C4.02 20.56 7.71 23 12 23Z" fill="#34A853"></path>
+<path d="M5.9 14.14C5.68 13.48 5.56 12.76 5.56 12C5.56 11.24 5.68 10.52 5.9 9.86V7.01H2.22C1.48 8.49 1.05 10.18 1.05 12C1.05 13.82 1.48 15.51 2.22 16.99L5.9 14.14Z" fill="#FBBC05"></path>
+<path d="M12 5.38C13.62 5.38 15.06 5.93 16.2 7.02L19.33 3.89C17.45 2.14 14.97 1 12 1C7.71 1 4.02 3.44 2.22 7.01L5.9 9.86C6.76 7.29 9.16 5.38 12 5.38Z" fill="#EA4335"></path>
+</svg>
+<span class="text-label-md font-label-md">Google</span>
+</button>
+<button class="flex-1 h-[56px] flex items-center justify-center gap-2 rounded-lg border border-outline-variant hover:bg-surface-container-low transition-colors active:scale-95 text-on-surface">
+<!-- Apple Icon Material Symbol approximation -->
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">ios</span>
+<span class="text-label-md font-label-md">Apple</span>
+</button>
+</div>
+</div>
+<!-- Keyboard Interaction Area Spacer (Simulated for layout balance) -->
+<div class="h-12 mt-auto text-center">
+<p class="text-caption font-caption text-on-surface-variant/70">
+                By continuing, you agree to our <a class="text-primary hover:underline" href="#">Terms</a> &amp; <a class="text-primary hover:underline" href="#">Privacy</a>.
+            </p>
+</div>
+</main>
+<script>
+        // Simple script to handle input focus state simulation if needed, 
+        // though CSS :focus-within handles the visual floating label well.
+        const phoneInput = document.getElementById('phone');
+        
+        // Auto-format simplistic phone number (just for demonstration of interaction)
+        phoneInput.addEventListener('input', function (e) {
+            let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+            e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+        });
+    </script>
+</body></html>

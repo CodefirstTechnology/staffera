@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>StaffEra - Home Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary": "#7d44a4",
+                      "surface-variant": "#e4e1ea",
+                      "surface-bright": "#fcf8ff",
+                      "on-tertiary-fixed": "#341100",
+                      "surface-container": "#f0ecf5",
+                      "surface-dim": "#dbd9e1",
+                      "on-primary-container": "#9da1ff",
+                      "on-primary-fixed-variant": "#373a9b",
+                      "on-background": "#1b1b21",
+                      "error": "#ba1a1a",
+                      "on-error": "#ffffff",
+                      "on-surface-variant": "#464652",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-container": "#602786",
+                      "secondary-fixed": "#f4daff",
+                      "inverse-primary": "#c0c1ff",
+                      "inverse-surface": "#303036",
+                      "secondary-container": "#d697fe",
+                      "tertiary-fixed": "#ffdbcb",
+                      "on-secondary-fixed": "#2f004c",
+                      "primary": "#15157d",
+                      "surface-container-high": "#eae7f0",
+                      "background": "#fcf8ff",
+                      "error-container": "#ffdad6",
+                      "surface-tint": "#4f54b4",
+                      "primary-fixed-dim": "#c0c1ff",
+                      "inverse-on-surface": "#f2eff8",
+                      "primary-fixed": "#e1e0ff",
+                      "primary-container": "#2e3192",
+                      "surface-container-low": "#f5f2fb",
+                      "on-tertiary-container": "#f19160",
+                      "on-secondary-fixed-variant": "#642b8a",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-container": "#6c2a00",
+                      "on-primary": "#ffffff",
+                      "surface-container-highest": "#e4e1ea",
+                      "tertiary-fixed-dim": "#ffb692",
+                      "on-secondary": "#ffffff",
+                      "on-surface": "#1b1b21",
+                      "on-error-container": "#93000a",
+                      "outline": "#777683",
+                      "surface": "#fcf8ff",
+                      "secondary-fixed-dim": "#e3b5ff",
+                      "on-tertiary-fixed-variant": "#773207",
+                      "tertiary": "#491a00",
+                      "on-primary-fixed": "#04006d",
+                      "outline-variant": "#c7c5d4"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px",
+                      "2xl": "1rem",
+                      "3xl": "1.5rem"
+              },
+              "spacing": {
+                      "card-gap": "20px",
+                      "container-padding": "24px",
+                      "unit": "8px",
+                      "gutter": "16px",
+                      "section-margin": "40px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "label-md": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "caption": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "caption": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .level-1-shadow {
+            box-shadow: 0px 4px 30px rgba(46, 49, 146, 0.08);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background pb-28 md:pb-0">
+<!-- TopAppBar -->
+<header class="sticky top-0 w-full z-50 bg-surface/70 dark:bg-surface-dim/70 backdrop-blur-xl border-b border-white/40 shadow-sm shadow-[0px_4px_30px_rgba(46,49,146,0.08)]">
+<div class="flex justify-between items-center px-container-padding py-4 max-w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<div class="flex flex-col">
+<span class="text-caption font-caption text-on-surface-variant">Current Location</span>
+<span class="text-label-md font-label-md text-on-background font-bold flex items-center gap-1">Mumbai, India <span class="material-symbols-outlined text-[16px]">expand_more</span></span>
+</div>
+</div>
+<div class="text-headline-md font-headline-md font-bold tracking-tight text-primary dark:text-primary-fixed hidden md:block">
+                StaffEra
+            </div>
+<div class="w-10 h-10 rounded-full bg-surface-variant overflow-hidden border border-outline-variant hover:opacity-80 transition-opacity cursor-pointer">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdslEMlpOldzUqQ7bsTgu1rnT6COfIFD5lslMTg-bH18tD4qxObsAdkitf_sHvuiusB6-0EnqalbbqCFUFr8h6dJdActlf4rBwiuEQ0Xr1nWQcBoqZFhYmu2DfzPHcGQr9oFUlAd6RIbC4NQr3dB4HegNutWbTz9HrhEhp0HWOaD1pWq1OtfAYMj0-Utp_oOPAPCXT1bhe_E4IJCrVWlZvpbd4lIteLTfAwdCVueKmrl9Exm3zmJcF4W7SLxB8jTD2sLv8wc2RFea9"/>
+</div>
+</div>
+<!-- Search Bar (Mobile mostly, visible on desktop too for utility) -->
+<div class="px-container-padding pb-4">
+<div class="relative bg-surface-container-low rounded-xl flex items-center h-12 px-4 focus-within:bg-white focus-within:border focus-within:border-primary transition-all duration-300">
+<span class="material-symbols-outlined text-on-surface-variant mr-3">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-body-md font-body-md text-on-background placeholder:text-on-surface-variant/60" placeholder="Search for 'Deep Cleaning'" type="text"/>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-container-padding md:px-8 pt-6">
+<!-- Hero Banner -->
+<section class="mb-section-margin">
+<div class="relative w-full rounded-3xl overflow-hidden bg-gradient-to-r from-secondary to-[#ED1E79] p-6 md:p-10 flex items-center justify-between shadow-[0px_10px_30px_rgba(125,68,164,0.3)]">
+<div class="z-10 max-w-[60%]">
+<span class="inline-block px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-caption font-caption text-white mb-3">Welcome Offer</span>
+<h1 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-white mb-2">Get 20% Off</h1>
+<p class="text-body-md font-body-md text-white/90 mb-4">On your first deep cleaning service with StaffEra.</p>
+<button class="bg-white text-secondary px-6 py-2 rounded-lg text-label-md font-label-md font-bold shadow-lg hover:scale-95 transition-transform duration-200">Book Now</button>
+</div>
+<div class="absolute right-0 top-0 bottom-0 w-1/2 overflow-hidden flex justify-end items-center opacity-80 pointer-events-none">
+<!-- Abstract geometric elements simulating 3D icons -->
+<div class="w-48 h-48 rounded-full bg-white/10 backdrop-blur-xl absolute -right-10 top-[-20%]"></div>
+<div class="w-32 h-32 rounded-3xl bg-white/20 backdrop-blur-lg rotate-12 absolute right-10 bottom-[-10%]"></div>
+</div>
+</div>
+</section>
+<!-- Service Categories Grid -->
+<section class="mb-section-margin">
+<div class="flex justify-between items-end mb-6">
+<h2 class="text-headline-md font-headline-md text-on-background">Explore Services</h2>
+</div>
+<div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+<!-- Category Item -->
+<div class="flex flex-col items-center gap-3 group cursor-pointer hover:-translate-y-1 transition-transform">
+<div class="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-surface-container flex items-center justify-center level-1-shadow group-hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-3xl text-primary" style="font-variation-settings: 'FILL' 1;">cleaning_services</span>
+</div>
+<span class="text-label-md font-label-md text-on-surface-variant text-center leading-tight">House<br/>Cleaning</span>
+</div>
+<div class="flex flex-col items-center gap-3 group cursor-pointer hover:-translate-y-1 transition-transform">
+<div class="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-surface-container flex items-center justify-center level-1-shadow group-hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-3xl text-primary">skillet</span>
+</div>
+<span class="text-label-md font-label-md text-on-surface-variant text-center leading-tight">Kitchen<br/>Help</span>
+</div>
+<div class="flex flex-col items-center gap-3 group cursor-pointer hover:-translate-y-1 transition-transform">
+<div class="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-surface-container flex items-center justify-center level-1-shadow group-hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-3xl text-primary">local_laundry_service</span>
+</div>
+<span class="text-label-md font-label-md text-on-surface-variant text-center leading-tight">Laundry</span>
+</div>
+<div class="flex flex-col items-center gap-3 group cursor-pointer hover:-translate-y-1 transition-transform">
+<div class="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-surface-container flex items-center justify-center level-1-shadow group-hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-3xl text-primary">bathtub</span>
+</div>
+<span class="text-label-md font-label-md text-on-surface-variant text-center leading-tight">Bathroom<br/>Cleaning</span>
+</div>
+<div class="flex flex-col items-center gap-3 group cursor-pointer hover:-translate-y-1 transition-transform">
+<div class="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-surface-container flex items-center justify-center level-1-shadow group-hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-3xl text-primary">inventory_2</span>
+</div>
+<span class="text-label-md font-label-md text-on-surface-variant text-center leading-tight">Home<br/>Org</span>
+</div>
+<div class="flex flex-col items-center gap-3 group cursor-pointer hover:-translate-y-1 transition-transform">
+<div class="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-surface-container flex items-center justify-center level-1-shadow group-hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-3xl text-primary">mop</span>
+</div>
+<span class="text-label-md font-label-md text-on-surface-variant text-center leading-tight">Deep<br/>Cleaning</span>
+</div>
+<div class="flex flex-col items-center gap-3 group cursor-pointer hover:-translate-y-1 transition-transform hidden md:flex">
+<div class="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-surface-container flex items-center justify-center level-1-shadow group-hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-3xl text-primary">iron</span>
+</div>
+<span class="text-label-md font-label-md text-on-surface-variant text-center leading-tight">Ironing</span>
+</div>
+<div class="flex flex-col items-center gap-3 group cursor-pointer hover:-translate-y-1 transition-transform hidden md:flex">
+<div class="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-surface-container flex items-center justify-center level-1-shadow group-hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-3xl text-primary">elderly</span>
+</div>
+<span class="text-label-md font-label-md text-on-surface-variant text-center leading-tight">Elderly<br/>Assist</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-xl bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-2xl border-t border-white/20 shadow-[0_-8px_30px_rgba(46,49,146,0.12)]">
+<div class="flex justify-around items-center h-20 px-6 pb-safe">
+<!-- Active Tab -->
+<a class="flex flex-col items-center justify-center text-secondary font-bold scale-110 transition-all duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-label-md font-label-md mt-1">Home</span>
+</a>
+<!-- Inactive Tabs -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-secondary/80 transition-all duration-150" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="text-label-md font-label-md mt-1">Bookings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-secondary/80 transition-all duration-150" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="text-label-md font-label-md mt-1">Wallet</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-secondary/80 transition-all duration-150" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-label-md font-label-md mt-1">Profile</span>
+</a>
+</div>
+</nav>
+</body></html>

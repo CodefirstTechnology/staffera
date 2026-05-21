@@ -1,0 +1,83 @@
+:root {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+  
+  /* Brand Smart Luxury Palette */
+  --primary: #15157d;
+  --primary-container: #2e3192;
+  --secondary: #7d44a4;
+  --accent: #10b981;
+  --error: #ef4444;
+  --warning: #f59e0b;
+  
+  /* Theme Colors (Obsidian Dark mode as default for extreme high-end executive aesthetic) */
+  --bg-app: #09090e;
+  --bg-sidebar: #0f0f18;
+  --bg-card: rgba(20, 20, 32, 0.6);
+  --border-card: rgba(255, 255, 255, 0.05);
+  
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+  
+  --shadow-premium: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 20px rgba(46, 49, 146, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Reset standard Vite container boundaries to allow fluid responsive screen utilization */
+#root {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: 100vh;
+  border-inline: none !important;
+  text-align: left !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-app);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Glassmorphic Panel utility rules */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-card);
+  box-shadow: var(--shadow-premium);
+  border-radius: 20px;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #a5b4fc 0%, #f472b6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

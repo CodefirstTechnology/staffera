@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Live Tracking - StaffEra</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts (Inter) -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#7d44a4",
+                    "surface-variant": "#e4e1ea",
+                    "surface-bright": "#fcf8ff",
+                    "on-tertiary-fixed": "#341100",
+                    "surface-container": "#f0ecf5",
+                    "surface-dim": "#dbd9e1",
+                    "on-primary-container": "#9da1ff",
+                    "on-primary-fixed-variant": "#373a9b",
+                    "on-background": "#1b1b21",
+                    "error": "#ba1a1a",
+                    "on-error": "#ffffff",
+                    "on-surface-variant": "#464652",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-container": "#602786",
+                    "secondary-fixed": "#f4daff",
+                    "inverse-primary": "#c0c1ff",
+                    "inverse-surface": "#303036",
+                    "secondary-container": "#d697fe",
+                    "tertiary-fixed": "#ffdbcb",
+                    "on-secondary-fixed": "#2f004c",
+                    "primary": "#15157d",
+                    "surface-container-high": "#eae7f0",
+                    "background": "#fcf8ff",
+                    "error-container": "#ffdad6",
+                    "surface-tint": "#4f54b4",
+                    "primary-fixed-dim": "#c0c1ff",
+                    "inverse-on-surface": "#f2eff8",
+                    "primary-fixed": "#e1e0ff",
+                    "primary-container": "#2e3192",
+                    "surface-container-low": "#f5f2fb",
+                    "on-tertiary-container": "#f19160",
+                    "on-secondary-fixed-variant": "#642b8a",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-container": "#6c2a00",
+                    "on-primary": "#ffffff",
+                    "surface-container-highest": "#e4e1ea",
+                    "tertiary-fixed-dim": "#ffb692",
+                    "on-secondary": "#ffffff",
+                    "on-surface": "#1b1b21",
+                    "on-error-container": "#93000a",
+                    "outline": "#777683",
+                    "surface": "#fcf8ff",
+                    "secondary-fixed-dim": "#e3b5ff",
+                    "on-tertiary-fixed-variant": "#773207",
+                    "tertiary": "#491a00",
+                    "on-primary-fixed": "#04006d",
+                    "outline-variant": "#c7c5d4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "card-gap": "20px",
+                    "container-padding": "24px",
+                    "unit": "8px",
+                    "gutter": "16px",
+                    "section-margin": "40px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "caption": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        /* Custom animations for the map markers and smooth entry */
+        @keyframes subtle-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-float {
+            animation: subtle-bounce 3s ease-in-out infinite;
+        }
+        @keyframes slide-up {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .animate-slide-up {
+            animation: slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-variant font-body-md text-on-surface antialiased overflow-hidden">
+<!-- App Canvas: Centered on desktop to simulate mobile view for this specific tracking task -->
+<main class="relative w-full h-[884px] mx-auto md:max-w-md bg-surface-container-lowest shadow-2xl overflow-hidden flex flex-col">
+<!-- Background Map Canvas -->
+<div class="absolute inset-0 z-0 bg-surface-container">
+<img class="w-full h-full object-cover opacity-70 grayscale-[20%]" data-alt="A highly detailed, premium, light-mode stylized 3D map view of a modern residential neighborhood. The map features soft, rounded building geometries, smooth roads, and lush green park areas. The lighting is bright and airy, reflecting a 'Smart Luxury' aesthetic with subtle indigo and soft white hues. The scene conveys a sense of high-end, efficient logistics." data-location="Premium residential area map, light mode" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCf6dOY9LZS2y_armuFUtp4t018Aj5mkcezBNA7G-DU-neMyouwmvVeO1SOGkCWwfFstN9siZjevjQBFro59ZCB8xqkXGfRZMCGT4CAlBBLsN4g4Yhq5F3eGJund3Mnb_7fXSftnKBLWtAtiBsfXQOVMyZB_12IGDzwJgTa6tUQrtEwH5lvLRkxy-BJs4Gb9WbfereH69656GDMhfToycsE2dwKDoGaG4aPkCVFGxCabIQBYAQI2TULjHL5Aja77h-XqQgDwzb_wcJc"/>
+<!-- Soft gradient overlay to ensure UI elements pop -->
+<div class="absolute inset-0 bg-gradient-to-b from-surface/50 via-transparent to-surface/90 mix-blend-overlay"></div>
+</div>
+<!-- Floating Top Bar (Task-Focused "Back" Navigation) -->
+<!-- Suppressing standard TopAppBar to prioritize the canvas, providing a minimalist context header -->
+<header class="relative z-40 px-container-padding py-6 flex justify-between items-center w-full">
+<button class="w-12 h-12 rounded-full bg-surface/80 backdrop-blur-xl shadow-[0_4px_30px_rgba(46,49,146,0.08)] flex items-center justify-center border border-white/50 text-on-surface hover:scale-95 transition-transform">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="bg-surface/80 backdrop-blur-xl px-5 py-2.5 rounded-full border border-white/50 shadow-[0_4px_30px_rgba(46,49,146,0.08)] text-label-md font-label-md text-primary font-bold">
+                Live Tracking
+            </div>
+<div class="w-12 h-12"></div> <!-- Spacer for alignment -->
+</header>
+<!-- Map Interaction Canvas -->
+<div class="relative flex-1 z-10 w-full pointer-events-none">
+<!-- Destination (House) Marker -->
+<div class="absolute top-[35%] left-[55%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+<div class="w-16 h-16 bg-surface/90 backdrop-blur-xl rounded-2xl shadow-[0_8px_30px_rgba(46,49,146,0.15)] flex items-center justify-center border border-white relative z-10">
+<span class="material-symbols-outlined text-3xl text-primary" style="font-variation-settings: 'FILL' 1;">home</span>
+<!-- Ripple effect -->
+<div class="absolute inset-0 rounded-2xl border-[3px] border-primary animate-ping opacity-20"></div>
+</div>
+<!-- Anchor dot -->
+<div class="w-2 h-2 rounded-full bg-primary mt-2 shadow-sm"></div>
+</div>
+<!-- Moving Staff Marker -->
+<div class="absolute top-[65%] left-[30%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center animate-float">
+<!-- Helper Info Bubble -->
+<div class="bg-surface backdrop-blur-md px-3 py-1 rounded-full shadow-md border border-white/40 mb-2 flex items-center gap-1.5 opacity-90">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="text-caption font-caption text-on-surface font-bold">Elena R.</span>
+</div>
+<!-- 3D Vehicle/Staff Icon -->
+<div class="w-14 h-14 bg-primary text-on-primary rounded-full shadow-[0_12px_25px_rgba(21,21,125,0.4)] flex items-center justify-center border-[3px] border-surface relative z-10">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+</div>
+<!-- Simulated Route Line (SVG) -->
+<svg class="absolute top-1/2 left-1/2 w-[200px] h-[250px] -z-10 overflow-visible" style="transform: translate(0, -100%);">
+<path class="text-primary opacity-40 drop-shadow-md" d="M0,0 C 80,-80 50,-180 120,-220" fill="transparent" stroke="currentColor" stroke-dasharray="8 8" stroke-linecap="round" stroke-width="4"></path>
+</svg>
+</div>
+</div>
+<!-- Glassmorphic Bottom Sheet (Level 2 Elevation) -->
+<div class="relative z-30 w-full bg-surface/85 backdrop-blur-[24px] rounded-t-[32px] border-t border-white/60 shadow-[0_-12px_40px_rgba(46,49,146,0.12)] p-container-padding flex flex-col gap-6 animate-slide-up pb-8">
+<!-- Handle -->
+<div class="w-12 h-1.5 bg-outline-variant/40 rounded-full mx-auto -mt-2"></div>
+<!-- ETA & Status Header -->
+<div class="flex justify-between items-end">
+<div>
+<h2 class="text-display-lg font-display-lg text-primary tracking-tight leading-none">12<span class="text-headline-md font-headline-md text-primary-fixed-dim tracking-normal ml-1">min</span></h2>
+<p class="text-body-md font-body-md text-on-surface-variant mt-1">Estimated arrival</p>
+</div>
+<!-- Level 3 Interactive Glow Chip -->
+<div class="bg-secondary/10 px-4 py-2 rounded-full flex items-center gap-2 border border-secondary/20 shadow-[0_0_15px_rgba(125,68,164,0.15)]">
+<div class="w-2.5 h-2.5 rounded-full bg-secondary animate-pulse"></div>
+<span class="text-label-md font-label-md text-secondary">On the way</span>
+</div>
+</div>
+<!-- Helper Profile Card (Level 1 Card nested in Level 2) -->
+<div class="bg-surface-container-lowest/80 rounded-[20px] p-4 border border-white/80 shadow-[0_4px_20px_rgba(46,49,146,0.06)] flex items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img class="w-14 h-14 rounded-[16px] object-cover shadow-sm border border-surface-variant" data-alt="A professional headshot of a friendly female home service provider wearing a clean, modern navy blue uniform. She has a warm smile and is situated in a bright, well-lit interior environment reflecting a smart luxury aesthetic. Her features denote reliability and expertise." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZWT_s98zj8gx-AgkErn6eUYBy3knfinSvyAsIIz6TE7Kxhh1McICVqzdK7KSuPN_7NX4daBr_OLr4ouMVVUNXSJXFgzVgc_oJqbZ3Tn7wSAfJuVHfeh3OZv2GymgaENSK9u4eSVTV5vZQwuH4IJ2gfjjqKfCCM82L3fkC1V1XAs-sW7vJmSX5fd2tJHB1IZS7Gun-tO2e_PoNkYtfQg7dZDWSGcPP2TaEB9zZe07kSfCd7F4HgDJR4htUuIQWHcB5ikx8cCgMCM2T"/>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 border-2 border-surface rounded-full"></div>
+</div>
+<div>
+<h3 class="text-headline-md font-headline-md text-on-surface leading-tight">Elena R.</h3>
+<div class="flex items-center gap-1 text-label-md font-label-md text-on-surface-variant mt-0.5">
+<span class="material-symbols-outlined text-[16px] text-yellow-500" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>4.9 <span class="text-outline">(120+)</span></span>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex gap-2">
+<button class="w-12 h-12 rounded-full bg-primary text-on-primary shadow-[0_4px_15px_rgba(21,21,125,0.3)] flex items-center justify-center hover:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat</span>
+</button>
+<button class="w-12 h-12 rounded-full bg-surface-container text-primary border border-primary/10 flex items-center justify-center hover:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">call</span>
+</button>
+</div>
+</div>
+<!-- Vertical Timeline -->
+<div class="flex flex-col gap-0 mt-2 pl-3">
+<!-- Step 1 (Completed) -->
+<div class="flex items-start gap-5 relative">
+<!-- Line -->
+<div class="absolute left-[11px] top-7 bottom-[-16px] w-0.5 bg-primary/20 z-0"></div>
+<!-- Icon -->
+<div class="relative z-10 w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-sm mt-0.5">
+<span class="material-symbols-outlined text-[14px] font-bold">check</span>
+</div>
+<!-- Content -->
+<div class="pb-6">
+<h4 class="text-label-md font-label-md text-on-surface">Helper Assigned</h4>
+<p class="text-caption font-caption text-on-surface-variant mt-0.5">Elena accepted your deep cleaning request.</p>
+</div>
+</div>
+<!-- Step 2 (Active) -->
+<div class="flex items-start gap-5 relative">
+<!-- Line -->
+<div class="absolute left-[11px] top-7 bottom-[-16px] w-[2px] bg-transparent border-l-2 border-dashed border-outline-variant/40 z-0"></div>
+<!-- Icon -->
+<div class="relative z-10 w-6 h-6 rounded-full bg-surface border-[3px] border-secondary flex items-center justify-center shadow-[0_0_12px_rgba(125,68,164,0.3)] mt-0.5">
+<div class="w-1.5 h-1.5 rounded-full bg-secondary"></div>
+</div>
+<!-- Content -->
+<div class="pb-6">
+<h4 class="text-label-md font-label-md text-secondary font-bold">On the way</h4>
+<p class="text-caption font-caption text-on-surface-variant mt-0.5">Helper is driving to your location.</p>
+</div>
+</div>
+<!-- Step 3 (Pending) -->
+<div class="flex items-start gap-5 relative">
+<!-- Icon -->
+<div class="relative z-10 w-6 h-6 rounded-full bg-surface border-2 border-outline-variant flex items-center justify-center mt-0.5">
+</div>
+<!-- Content -->
+<div>
+<h4 class="text-label-md font-label-md text-on-surface-variant">Arrived</h4>
+<p class="text-caption font-caption text-outline/70 mt-0.5">Waiting for arrival.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>
